@@ -1,14 +1,53 @@
 # importing pandas
 import pandas as pd
 
+string = "TREVZLONAPMI" #! change me
 
-#! change me
-letterClasses = [['A', 'N', 'U'], 
-                 ['M', "I", "C"], 
-                 ['R', 'L', 'O'],
-                 ['D', 'S', 'Z']
-                ]
+#       T R E
+#    V         O
+#    Z         N
+#    L         A
+#       P M I
 
+def string_to_letterClasses(string):
+
+    def is_valid_string(string) -> bool:
+        # check if string is 12 characters long
+        if len(string) != 12:
+            print("string must be 12 characters long")
+            return
+        
+        # check if string is all uppercase
+        if not string.isupper():
+            print("string must be all uppercase")
+            return
+        
+        # check if string is all unique letters
+        if len(set(string)) != 12:
+            print("string must be all unique letters")
+            return
+        
+        # check if string is all letters
+        if not string.isalpha():
+            print("string must be all letters")
+            return
+    
+    if is_valid_string(string):
+        letterClasses = []
+        for i in range(4):
+            print(i*3+2)
+            letterClasses.append([string[i*3], string[i*3 + 1], string[i*3 + 2]])
+        return letterClasses
+
+# letterClasses format: 
+# [
+#  ['T', 'R', 'E'], 
+#  ['V', "Z", "L"], 
+#  ['O', 'N', 'A'],
+#  ['P', 'M', 'I']
+# ]
+
+letterClasses = string_to_letterClasses(string)
 
 number_of_words_in_solution = 2 #! change me (1, 2, or 3 (slow))
 
@@ -17,7 +56,6 @@ try_hard_words = False #! change me
 show_all_solutions = True #! change me
 
 possible_soultions = []
-
 
 # read text file into pandas DataFrame
 if try_hard_words:
